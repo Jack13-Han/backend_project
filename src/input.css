@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Preline UI */
+@source "./node_modules/preline/dist/*.js";
+
+@import "preline/variants.css";
+
+/* Plugins */
+@plugin "@tailwindcss/forms";
+
+
+/* Dark theme */
+
+@custom-variant dark (&:where(.dark, .dark *));
