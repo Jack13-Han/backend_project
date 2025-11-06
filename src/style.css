@@ -8,6 +8,7 @@
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-yellow-50: oklch(98.7% 0.026 102.212);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
@@ -17,6 +18,7 @@
     --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-600: oklch(44.6% 0.03 256.802);
+    --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: oklch(21% 0.034 264.665);
     --color-gray-950: oklch(13% 0.028 261.692);
@@ -233,14 +235,23 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my-3 {
+    margin-block: calc(var(--spacing) * 3);
+  }
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
+  }
+  .my-6 {
+    margin-block: calc(var(--spacing) * 6);
   }
   .ms-auto {
     margin-inline-start: auto;
   }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+  .mr-4 {
+    margin-right: calc(var(--spacing) * 4);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -287,14 +298,14 @@
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
   .max-w-\[1000px\] {
     max-width: 1000px;
-  }
-  .max-w-sm {
-    max-width: var(--container-sm);
   }
   .flex-none {
     flex: none;
@@ -401,23 +412,17 @@
   .bg-gray-200 {
     background-color: var(--color-gray-200);
   }
-  .bg-gray-400 {
-    background-color: var(--color-gray-400);
-  }
   .bg-gray-800 {
     background-color: var(--color-gray-800);
   }
   .bg-white {
     background-color: var(--color-white);
   }
-  .p-6 {
-    padding: calc(var(--spacing) * 6);
+  .bg-yellow-50 {
+    background-color: var(--color-yellow-50);
   }
   .p-10 {
     padding: calc(var(--spacing) * 10);
-  }
-  .p-30 {
-    padding: calc(var(--spacing) * 30);
   }
   .px-1 {
     padding-inline: calc(var(--spacing) * 1);
@@ -436,9 +441,6 @@
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
-  }
-  .px-30 {
-    padding-inline: calc(var(--spacing) * 30);
   }
   .px-50 {
     padding-inline: calc(var(--spacing) * 50);
@@ -464,8 +466,8 @@
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
-  .py-16 {
-    padding-block: calc(var(--spacing) * 16);
+  .py-10 {
+    padding-block: calc(var(--spacing) * 10);
   }
   .pb-0 {
     padding-bottom: calc(var(--spacing) * 0);
@@ -478,6 +480,9 @@
   }
   .align-middle {
     vertical-align: middle;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
   }
   .font-serif {
     font-family: var(--font-serif);
@@ -531,6 +536,9 @@
   .text-gray-600 {
     color: var(--color-gray-600);
   }
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
   .text-gray-800 {
     color: var(--color-gray-800);
   }
@@ -559,6 +567,13 @@
   }
   .\[--auto-close\:lg\] {
     --auto-close: lg;
+  }
+  .hover\:border-blue-600 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-blue-600);
+      }
+    }
   }
   .hover\:bg-blue-700 {
     &:hover {
@@ -591,6 +606,11 @@
   .focus\:border-blue-500 {
     &:focus {
       border-color: var(--color-blue-500);
+    }
+  }
+  .focus\:border-blue-600 {
+    &:focus {
+      border-color: var(--color-blue-600);
     }
   }
   .focus\:bg-blue-700 {
@@ -740,10 +760,12 @@
       color: var(--color-white);
     }
   }
-  .dark\:placeholder-neutral-500 {
+  .dark\:hover\:border-blue-600 {
     &:where(.dark, .dark *) {
-      &::placeholder {
-        color: var(--color-neutral-500);
+      &:hover {
+        @media (hover: hover) {
+          border-color: var(--color-blue-600);
+        }
       }
     }
   }
@@ -783,6 +805,13 @@
       }
     }
   }
+  .dark\:focus\:border-blue-600 {
+    &:where(.dark, .dark *) {
+      &:focus {
+        border-color: var(--color-blue-600);
+      }
+    }
+  }
   .dark\:focus\:bg-neutral-200 {
     &:where(.dark, .dark *) {
       &:focus {
@@ -808,13 +837,6 @@
     &:where(.dark, .dark *) {
       &:focus {
         color: var(--color-neutral-200);
-      }
-    }
-  }
-  .dark\:focus\:ring-neutral-600 {
-    &:where(.dark, .dark *) {
-      &:focus {
-        --tw-ring-color: var(--color-neutral-600);
       }
     }
   }

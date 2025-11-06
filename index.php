@@ -10,7 +10,7 @@
 
 <body>
 
-    <main class="max-w-[1000px] mx-auto px-50">
+    <main class="max-w-[1000px] mx-auto py-10 px-50">
         <header>
             <h1 class="text-3xl font-serif font-bold">
                 Backend Projects
@@ -31,7 +31,7 @@
 
 
 
-        <div id="hs-sidebar-content-push-to-mini-sidebar" class="hs-overlay [--auto-close:lg] hs-overlay-minified:w-13 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 w-64
+        <div id="hs-sidebar-content-push-to-mini-sidebar" class=" hs-overlay [--auto-close:lg] hs-overlay-minified:w-13 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 w-64
                 hs-overlay-open:translate-x-0
                 -translate-x-full transition-all duration-300 transform
                 h-full
@@ -126,7 +126,7 @@
 
 
 
-        <section class="bg-gray-100 p-10 rounded-lg">
+        <section class="bg-gray-100 my-6 p-10 rounded-lg">
             <ol class="flex items-center whitespace-nowrap mb-5">
                 <li class="inline-flex items-center">
                     <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-hidden focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500" href="#">
@@ -156,7 +156,7 @@
                         <input type="number" name="breadth" id="breadth" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                     </div>
 
-                    <button type="submit" class="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                    <button type="submit" name="calc_btn" class="w-full mt-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                         Calculate
                     </button>
                 </form>
