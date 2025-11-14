@@ -29,4 +29,24 @@
 // }
 
 
-?>
+class Animal
+{
+
+
+    private $name;
+
+    
+    // public function run(){
+    //     echo "$this->name is running...";
+    // }
+    public function __construct(){
+        echo "Creating Animal object";
+    
+        // throw new \Exception('Not implemented');
+    }
+}
+
+$dog = new Animal();
+// $dog->name="bobo";
+// $dog->run();
+var_dump($dog);

@@ -1,17 +1,33 @@
 <?php
 
+// echo "<pre>";
+// print_r($_POST);
+
+$amount = $_POST["amount"];
+
+$from_currency_arr = explode("-", $_POST["from_currency"]);
+$from_currency_name = $from_currency_arr[0];
+$from_currency_rate = $from_currency_arr[1];
 
 
-// var_dump(isset($_POST["calc_btn"]));
+$to_currency_arr = explode("-", $_POST["to_currency"]);
+$to_currency_name = $to_currency_arr[0];
+$to_currency_rate = $to_currency_arr[1];
 
-if (empty($_POST["width"]) || empty($_POST["breadth"])) {
-    // die("-------------Please Input data----------");
-    header("Location:index.php");
-}
+
+$mmk = $amount * $from_currency_rate;
+
+
+$to = $mmk / $to_currency_rate;
+
+
+echo "result" . $to;
+
+
+// print_r($from_currency_arr);
 
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -20,33 +36,15 @@ if (empty($_POST["width"]) || empty($_POST["breadth"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area App</title>
     <link rel="stylesheet" href="./src/style.css">
+    <title>Exchange Process</title>
 </head>
 
 <body>
-
     <main class="max-w-[1000px] mx-auto py-10 px-50">
-        <header>
-            <h1 class="text-3xl font-serif font-bold">
-                Backend Projects
-            </h1>
-
-            <!-- Navigation Toggle -->
-            <div class="lg:hidden py-6 text-center">
-                <button type="button" class="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start bg-gray-800 border border-gray-800 text-white text-sm font-medium rounded-lg shadow-2xs align-middle hover:bg-gray-950 focus:outline-hidden focus:bg-gray-900 dark:bg-white dark:text-neutral-800 dark:hover:bg-neutral-200 dark:focus:bg-neutral-200" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-sidebar-content-push-to-mini-sidebar" aria-label="Toggle navigation" data-hs-overlay="#hs-sidebar-content-push-to-mini-sidebar">
-                    Open
-                </button>
-            </div>
-            <!-- End Navigation Toggle -->
-
-
-        </header>
-
         <!-- Sidebar -->
         <?php include("./sidebar.php") ?>
         <!-- End Sidebar -->
-
 
 
         <section class="bg-gray-100 p-10 rounded-lg">
@@ -76,36 +74,8 @@ if (empty($_POST["width"]) || empty($_POST["breadth"])) {
             <hr class="border-black">
 
             <div>
-                <?php
-
-
-                // print_r($_POST);
-
-
-                $width = $_POST["width"];
-
-                $breadth = $_POST["breadth"];
-
-                $area = $width * $breadth;
-
-
-                $fileName = "record.txt";
-
-                if (!file_exists($fileName)) {
-                    touch($fileName);
-                }
-
-                $fileStream = fopen($fileName, "a");
-
-                fwrite($fileStream, "\n $width * $breadth = $area");
-
-                fclose($fileStream);
-                // echo $area;
-                ?>
-
-
                 <p class="text-3xl text-center my-4 font-bold ">
-                    <?= $area ?> Sqft
+                    <?= round($to,2) ?> <?= $to_currency_name ?> 
                 </p>
 
                 <div class="flex">
@@ -121,8 +91,7 @@ if (empty($_POST["width"]) || empty($_POST["breadth"])) {
 
         </section>
     </main>
-
-    <script src="./node_modules/preline/dist/preline.js"></script>
+ <script src="./node_modules/preline/dist/preline.js"></script>
 </body>
 
 </html>
